@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">App name</string>
+    <!-- Main Activity -->
+    <string name="name">DiscoRater</string>
+    <string name="slogan">Find your Rithm, Find your Night</string>
+    <string name="image">Prueba</string>
+    <string name="button">Go to Log In</string>
+
+    <!-- Second Activity -->
+    <string name="slogan2">Find the best clubs in the city</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="button2">Log In</string>
+</resources>
