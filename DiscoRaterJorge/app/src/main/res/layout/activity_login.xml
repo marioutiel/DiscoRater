@@ -105,58 +105,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textViewForgotPassword" />
 
-    <Button
-        android:id="@+id/buttonLoginDisco"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="32dp"
-        android:layout_marginTop="2dp"
-        android:padding="12dp"
-        android:text="Log in &amp; Search Clubs"
-        android:textSize="14dp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
-
-
     <TextView
-        android:id="@+id/textViewOrLoginWith"
+        android:id="@+id/textNoAcc"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="Or login with"
+        android:layout_marginEnd="4dp"
+        android:text="Dont have an account yet?"
         android:textSize="12sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonLoginDisco" />
-
-
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:orientation="horizontal"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewOrLoginWith">
-
-        <Button
-            android:id="@+id/buttonFacebook"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
-            android:text="Facebook" />
-
-        <Button
-            android:id="@+id/buttonGoogle"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Google" />
-
-    </LinearLayout>
-
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSign"
+        app:layout_constraintEnd_toStartOf="@+id/textViewSign"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/textViewSign"
@@ -164,11 +122,56 @@
         android:layout_height="wrap_content"
         android:clickable="true"
         android:focusable="true"
+        android:text="Sign up here!"
+        android:textColor="#DA3434"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toTopOf="@+id/textViewOrLoginWith"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/textNoAcc"
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+
+    <TextView
+        android:id="@+id/textViewOrLoginWith"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginTop="52dp"
-        android:text="Dont have an account yet? Sign up here!"
+        android:text="Or login with"
         android:textSize="12sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        app:layout_constraintTop_toBottomOf="@+id/buttonLogin" />
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:layout_marginHorizontal="64dp"
+        android:orientation="horizontal"
+        android:weightSum="2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textViewOrLoginWith">
+
+        <Button
+            android:id="@+id/buttonFacebook"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:text="Facebook" />
+
+        <Button
+            android:id="@+id/buttonGoogle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Google" />
+
+    </LinearLayout>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

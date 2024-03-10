@@ -16,11 +16,20 @@
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
+            android:name=".SignUpActivity"
+            android:exported="false" />
+        <activity
             android:name=".MainFeedActivity"
             android:exported="false" />
         <activity
-            android:name=".MainDiscoActivity"
-            android:exported="false" />
+            android:name=".PostActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".DiscoFeedActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".DiscoActivity"
+            android:exported="false"/>
         <activity
             android:name=".MainActivity"
             android:exported="true">
