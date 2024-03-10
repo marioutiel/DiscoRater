@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <style name="small">
-        <item name="android:scaleX">0.8</item>
-        <item name="android:scaleY">0.8</item>
-    </style>
-</resources>
