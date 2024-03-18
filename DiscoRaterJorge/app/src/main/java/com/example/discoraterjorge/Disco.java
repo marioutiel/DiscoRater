@@ -3,16 +3,18 @@ package com.example.discoraterjorge;
 public class Disco {
 
     private String name, day, events, theme;
+    private String ticketPrice;
     private String cocktailPrice;
     private String beerPrice;
     private String tequilaPrice;
     private String imageUri;
 
-    public Disco(String name, String day, String theme, String events, String cocktailPrice, String beerPrice, String tequilaPrice, String imageUri) {
+    public Disco(String name, String day, String theme, String events, String ticketPrice, String cocktailPrice, String beerPrice, String tequilaPrice, String imageUri) {
         this.name = name;
         this.day = day;
         this.theme = theme;
         this.events = events;
+        this.ticketPrice = ticketPrice;
         this.cocktailPrice = cocktailPrice;
         this.beerPrice = beerPrice;
         this.tequilaPrice = tequilaPrice;
@@ -33,6 +35,13 @@ public class Disco {
         this.events = events;
     }
 
+    public String getTicketPrice() {
+        return ticketPrice;
+    }
+
+    public void setTicketPrice(String ticketPrice) {
+        this.ticketPrice = ticketPrice;
+    }
     public String getCocktailPrice() {
         return cocktailPrice;
     }

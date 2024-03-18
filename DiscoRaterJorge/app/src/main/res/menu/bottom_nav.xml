@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/navigation_post"
+        android:icon="@drawable/feliz"
+        android:title="Posts" />
+    <item
+        android:id="@+id/navigation_publish"
+        android:icon="@drawable/nota"
+        android:title="Publish" />
+
+    <item
+        android:id="@+id/navigation_clubs"
+        android:icon="@drawable/bola2"
+        android:title="Discos" />
+
+
+    <item
+        android:id="@+id/navigation_feed"
+        android:icon="@drawable/usuario2"
+        android:title="Profile" />
+</menu>

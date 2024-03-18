@@ -32,7 +32,7 @@ public class PostActivity extends AppCompatActivity {
         Button cancelButton = findViewById(R.id.btnCancel);
 
         // This is to open the gallery and select the image to upload
-        // Estaria bien mirar comom hacer para seleccionar mas de una imagen
+        // Estaria bien mirar como hacer para seleccionar mas de una imagen
         imgLastGalleryPhoto.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

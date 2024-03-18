@@ -85,11 +85,13 @@ public class DiscoActivity extends AppCompatActivity {
 
     private void collectDataAndReturnResult() {
         EditText etEvent = findViewById(R.id.etEvent);
+        EditText etTicketPrice = findViewById(R.id.etTicketPrice);
         EditText etCocktailPrice = findViewById(R.id.etDrinkPrice);
         EditText etBeerPrice = findViewById(R.id.etBeerPrice);
         EditText etTequilaPrice = findViewById(R.id.etFoodPrice);
 
         String event = etEvent.getText().toString();
+        String ticketPrice = etTicketPrice.getText().toString();
         String cocktailPrice = etCocktailPrice.getText().toString();
         String beerPrice = etBeerPrice.getText().toString();
         String tequilaPrice = etTequilaPrice.getText().toString();
@@ -110,8 +112,24 @@ public class DiscoActivity extends AppCompatActivity {
             return;
         }
 
+        if (ticketPrice.trim().isEmpty()) {
+            // Si el campo de experiencia está vacío, muestra una alerta y no continúes
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Empty Field");
+            builder.setMessage("Please, fill Ticket Price field. Ticket Price Field cannot be empty");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+            return;
+        }
+
         Intent returnIntent = new Intent();
         returnIntent.putExtra("event", event);
+        returnIntent.putExtra("ticketPrice", ticketPrice);
         returnIntent.putExtra("cocktailPrice", cocktailPrice);
         returnIntent.putExtra("beerPrice", beerPrice);
         returnIntent.putExtra("tequilaPrice", tequilaPrice);

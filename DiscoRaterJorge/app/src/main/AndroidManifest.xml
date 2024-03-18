@@ -13,6 +13,9 @@
         android:theme="@style/Theme.DiscoRaterJorge"
         tools:targetApi="31">
         <activity
+            android:name=".PasswordActivity"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="false" />
         <activity
@@ -23,7 +26,7 @@
             android:exported="false" />
         <activity
             android:name=".PostActivity"
-            android:exported="false"/>
+            android:exported="false" />
         <activity
             android:name=".DiscoFeedActivity"
             android:exported="false"/>

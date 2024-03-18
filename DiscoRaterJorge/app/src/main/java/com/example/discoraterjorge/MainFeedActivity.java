@@ -4,19 +4,25 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.view.View;
 import android.widget.Toast;
 
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
 import java.util.ArrayList;
 
-public class MainFeedActivity extends AppCompatActivity {
+public class MainFeedActivity extends AppCompatActivity
+        implements BottomNavigationView.OnItemSelectedListener {
 
     private ArrayList<Post> posts;
     private RecyclerView recyclerView;
@@ -31,6 +37,9 @@ public class MainFeedActivity extends AppCompatActivity {
 
         posts = new ArrayList<>();
         recyclerView = findViewById(R.id.recyclerView);
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
+        bottomNavigationView.setOnItemSelectedListener(this);
+
 
         posts.add(new Post("John", "Madrid, Spain", 202403060, "Great night out!", "8€", "5€", "3€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta1));
         posts.add(new Post("Jorge", "Gerona, Spain", 202403070, "Fun with friends", "7€", "4€", "2€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta2));
@@ -41,27 +50,26 @@ public class MainFeedActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         recyclerView.setAdapter(adapter);
 
-
-        Button btnCreatePost = findViewById(R.id.btnCreatePost);
-
-        btnCreatePost.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainFeedActivity.this, PostActivity.class);
-                startActivityForResult(intent, POST_ACTIVITY_REQUEST_CODE);
-            }
-        });
-
-        Button btnClubs = findViewById(R.id.btnClubs);
-
-        btnClubs.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(MainFeedActivity.this, DiscoFeedActivity.class);
-                startActivity(intent);
-            }
-        });
     }
+
+
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        int itemId = item.getItemId();
+        if (itemId == R.id.navigation_publish) {
+            Intent intent = new Intent(this, PostActivity.class);
+            startActivityForResult(intent, POST_ACTIVITY_REQUEST_CODE);
+        } else if ( itemId == R.id.navigation_post) {
+            scrollToTop();
+        } else if (itemId == R.id.navigation_clubs) {
+            Intent intent = new Intent(this, DiscoFeedActivity.class);
+            startActivityForResult(intent, POST_ACTIVITY_REQUEST_CODE);
+        }
+
+
+        return true;
+    }
+
 
 
     @Override
@@ -98,6 +106,15 @@ public class MainFeedActivity extends AppCompatActivity {
         Post newPost = new Post(name, location, timestamp, experience, cocktailPrice, beerPrice, tequilaPrice, imageUri);
         posts.add(0, newPost);
         adapter.notifyDataSetChanged();
+    }
+
+
+    private void scrollToTop() {
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
+        if (layoutManager != null) {
+            recyclerView.smoothScrollToPosition(0);
+        }
     }
 
 }

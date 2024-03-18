@@ -40,6 +40,7 @@ public class DiscoAdapter extends RecyclerView.Adapter<DiscoAdapter.DiscoViewHol
         holder.dayTextView.setText(disco.getDay());
         holder.themeTextView.setText(disco.getTheme());
         holder.eventsTextView.setText(disco.getEvents()); // Establecer el texto de la experiencia
+        holder.ticketPriceTextView.setText(disco.getTicketPrice());
         holder.cocktailPriceTextView.setText(disco.getCocktailPrice()); // Establecer el precio del cóctel
         holder.beerPriceTextView.setText(disco.getBeerPrice()); // Establecer el precio de la cerveza
         holder.tequilaPriceTextView.setText(disco.getTequilaPrice()); // Establecer el precio del tequila
@@ -66,6 +67,7 @@ public class DiscoAdapter extends RecyclerView.Adapter<DiscoAdapter.DiscoViewHol
         TextView dayTextView;
         TextView themeTextView;
         TextView eventsTextView; // Nuevo TextView para la experiencia
+        TextView ticketPriceTextView;
         TextView cocktailPriceTextView; // Nuevo TextView para el precio del cóctel
         TextView beerPriceTextView; // Nuevo TextView para el precio de la cerveza
         TextView tequilaPriceTextView; // Nuevo TextView para el precio del tequila
@@ -78,6 +80,7 @@ public class DiscoAdapter extends RecyclerView.Adapter<DiscoAdapter.DiscoViewHol
             dayTextView = itemView.findViewById(R.id.textViewDay);
             themeTextView = itemView.findViewById(R.id.textViewTheme);
             eventsTextView = itemView.findViewById(R.id.textViewEventDisco); // Inicialización del nuevo TextView
+            ticketPriceTextView = itemView.findViewById(R.id.textViewTicketPrice);
             cocktailPriceTextView = itemView.findViewById(R.id.textViewCocktailPriceDisco); // Inicialización del nuevo TextView
             beerPriceTextView = itemView.findViewById(R.id.textViewBeerPriceDisco); // Inicialización del nuevo TextView
             tequilaPriceTextView = itemView.findViewById(R.id.textViewTequilaPriceDisco);

@@ -1,11 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<ScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="16dp">
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
 
     <TextView
         android:id="@+id/textTop"
@@ -29,51 +33,79 @@
         android:id="@+id/editTextUsername"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="32dp"
         android:hint="Name"
         android:inputType="textPersonName"
         android:maxLength="20"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="32dp" />
+        android:minHeight="48dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
     <EditText
         android:id="@+id/editTextUserEmail"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
         android:hint="Email"
         android:inputType="textEmailAddress"
-        android:maxLength="20"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp"/>
+        android:maxLength="50"
+        android:minHeight="48dp"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/editTextPassword"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
         android:hint="Password"
         android:inputType="textPassword"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp" />
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/editTextPassword2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="8dp"
+        android:layout_marginTop="16dp"
         android:hint="Repeat Password"
         android:inputType="textPassword"
-        android:layout_marginHorizontal="8dp"
-        android:layout_marginTop="16dp" />
+        android:minHeight="48dp" />
 
-    <Button
-        android:id="@+id/buttonSignUp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginHorizontal="8dp"
-        android:textStyle="bold"
-        android:text="Create Account"
-        android:layout_marginTop="32dp" />
+
+        <TextView
+            android:id="@+id/buttonLoadPicture"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:text="Select Profile Picture"
+            android:gravity="center_horizontal"
+            android:textStyle="bold"
+            android:layout_marginTop="32dp"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profilePicture"
+            android:layout_width="120dp"
+            android:layout_height="120dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="16dp"
+            android:src="@drawable/fiesta1"
+            app:civ_border_width="2dp"
+            app:civ_border_color="#FF000000"/>
+
+        <Button
+            android:id="@+id/buttonSignUp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="8dp"
+            android:textStyle="bold"
+            android:text="Create Account"
+            android:layout_marginTop="52dp"
+            android:layout_marginBottom="32dp"/>
+
 
 
 </LinearLayout>
+</ScrollView>

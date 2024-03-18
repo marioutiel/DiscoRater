@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/profile"
+        android:icon="@drawable/usuario"
+        android:title="Profile" />
+
+    <item
+        android:id="@+id/navigation_clubs"
+        android:icon="@drawable/bola"
+        android:title="Discos" />
+
+    <item
+        android:id="@+id/navigation_post"
+        android:icon="@drawable/comunidad"
+        android:title="Posts" />
+
+    <item
+        android:id="@+id/publish"
+        android:icon="@drawable/nota"
+        android:title="Publish" />
+</menu>
