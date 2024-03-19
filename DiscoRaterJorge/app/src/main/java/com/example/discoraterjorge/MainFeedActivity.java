@@ -82,6 +82,8 @@ public class MainFeedActivity extends AppCompatActivity
         super.onActivityResult(requestCode, resultCode, data);
 
         if (resultCode == RESULT_OK) {
+            String name = data.getStringExtra("name");
+            String location = data.getStringExtra("location");
             String experience = data.getStringExtra("experience");
             String cocktailPrice = data.getStringExtra("cocktailPrice");
             String beerPrice = data.getStringExtra("beerPrice");
@@ -89,7 +91,11 @@ public class MainFeedActivity extends AppCompatActivity
             String imageUri = data.getStringExtra("imageUri");
 
             // With this we create the post
-            createPost("User", "Location", System.currentTimeMillis(), experience, cocktailPrice, beerPrice, tequilaPrice, imageUri);
+            if (name != null) {
+                createPost(name, location, System.currentTimeMillis(), experience, cocktailPrice, beerPrice, tequilaPrice, imageUri);
+            } else {
+                createPost("User", location, System.currentTimeMillis(), experience, cocktailPrice, beerPrice, tequilaPrice, imageUri);
+            }
 
             // This is to scroll up to the first image in the feed once a new image is posted
             recyclerView.smoothScrollToPosition(0);

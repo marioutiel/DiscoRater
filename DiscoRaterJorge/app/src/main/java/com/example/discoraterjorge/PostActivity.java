@@ -84,18 +84,33 @@ public class PostActivity extends AppCompatActivity {
     }
 
     private void collectDataAndReturnResult() {
+        EditText etLocation = findViewById(R.id.etLocation);
         EditText etExperience = findViewById(R.id.etExperience);
         EditText etCocktailPrice = findViewById(R.id.etDrinkPrice);
         EditText etBeerPrice = findViewById(R.id.etBeerPrice);
         EditText etTequilaPrice = findViewById(R.id.etFoodPrice);
 
+        String location = etLocation.getText().toString();
         String experience = etExperience.getText().toString();
         String cocktailPrice = etCocktailPrice.getText().toString();
         String beerPrice = etBeerPrice.getText().toString();
         String tequilaPrice = etTequilaPrice.getText().toString();
 
-        // Check that the experience field is not empty. The rest can be
-        if (experience.trim().isEmpty()) {
+        // Check that the location and experience fields are not empty.
+        if (location.trim().isEmpty()) {
+            // Si el campo de location está vacío, muestra una alerta y no continúes
+            AlertDialog.Builder builder = new AlertDialog.Builder(this);
+            builder.setTitle("Empty Field");
+            builder.setMessage("Please, tell us about the location. Location Field cannot be empty");
+            builder.setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+                    dialog.dismiss();
+                }
+            });
+            builder.show();
+            return;
+        } else if ( experience.trim().isEmpty()) {
             // Si el campo de experiencia está vacío, muestra una alerta y no continúes
             AlertDialog.Builder builder = new AlertDialog.Builder(this);
             builder.setTitle("Empty Field");
@@ -111,6 +126,8 @@ public class PostActivity extends AppCompatActivity {
         }
 
         Intent returnIntent = new Intent();
+        // returnIntent.putExtra("name", name);
+        returnIntent.putExtra("location", location);
         returnIntent.putExtra("experience", experience);
         returnIntent.putExtra("cocktailPrice", cocktailPrice);
         returnIntent.putExtra("beerPrice", beerPrice);
