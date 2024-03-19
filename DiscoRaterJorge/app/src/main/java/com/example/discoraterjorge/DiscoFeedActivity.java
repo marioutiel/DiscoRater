@@ -111,7 +111,7 @@ public class DiscoFeedActivity extends AppCompatActivity
 
 
     private void scrollToTop() {
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        RecyclerView recyclerView = findViewById(R.id.recyclerViewDisco);
         LinearLayoutManager layoutManager = (LinearLayoutManager) recyclerView.getLayoutManager();
         if (layoutManager != null) {
             recyclerView.smoothScrollToPosition(0);
