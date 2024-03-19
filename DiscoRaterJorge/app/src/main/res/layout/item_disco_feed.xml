@@ -37,7 +37,7 @@
                 android:id="@+id/textViewNameDisco"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="John"
+                android:text="ClubA"
                 android:textAlignment="center"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -47,7 +47,7 @@
                 android:id="@+id/textViewDay"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Madrid, Spain"
+                android:text="Sunday"
                 android:textAlignment="center"
                 android:textSize="18sp" />
 
@@ -58,7 +58,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
-            android:text="5 minutes"
+            android:text="Electro"
             android:textAlignment="center"
             android:textSize="18dp"
             app:layout_constraintBottom_toBottomOf="@+id/linearLayoutDisco"

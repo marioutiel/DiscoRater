@@ -9,6 +9,11 @@ public class Post {
     private String tequilaPrice;
     private String imageUri;
 
+    // No-argument constructor
+    public Post() {
+    }
+
+    // Argument-based constructor
     public Post(String name, String location, long timestamp, String experience, String cocktailPrice, String beerPrice, String tequilaPrice, String imageUri) {
         this.name = name;
         this.location = location;

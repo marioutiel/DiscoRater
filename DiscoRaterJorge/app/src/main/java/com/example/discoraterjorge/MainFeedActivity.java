@@ -2,6 +2,7 @@ package com.example.discoraterjorge;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -18,7 +19,10 @@ import android.widget.Toast;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
+import java.lang.reflect.Type;
 import java.util.ArrayList;
 
 public class MainFeedActivity extends AppCompatActivity
@@ -41,10 +45,7 @@ public class MainFeedActivity extends AppCompatActivity
         bottomNavigationView.setOnItemSelectedListener(this);
 
 
-        posts.add(new Post("John", "Madrid, Spain", 202403060, "Great night out!", "8€", "5€", "3€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta1));
-        posts.add(new Post("Jorge", "Gerona, Spain", 202403070, "Fun with friends", "7€", "4€", "2€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta2));
-        posts.add(new Post("Jaime", "Malaga, Spain", 202403060, "Lively atmosphere", "9€", "5€", "4€","android.resource://" + getPackageName() + "/" + R.drawable.fiesta3));
-        posts.add(new Post("Ana", "Sevilla, Spain", 202403060, "Awesome DJ set", "10€", "6€", "5€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta4));
+        loadPosts();
 
         adapter = new PostAdapter(posts, this);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -70,7 +71,11 @@ public class MainFeedActivity extends AppCompatActivity
         return true;
     }
 
-
+    @Override
+    protected void onPause() {
+        super.onPause();
+        savePosts(); // Save posts when the activity is paused
+    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
@@ -106,8 +111,8 @@ public class MainFeedActivity extends AppCompatActivity
         Post newPost = new Post(name, location, timestamp, experience, cocktailPrice, beerPrice, tequilaPrice, imageUri);
         posts.add(0, newPost);
         adapter.notifyDataSetChanged();
+        savePosts(); // Save the updated list of posts
     }
-
 
     private void scrollToTop() {
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
@@ -117,4 +122,33 @@ public class MainFeedActivity extends AppCompatActivity
         }
     }
 
+    private void savePosts() {
+        SharedPreferences sharedPreferences = getSharedPreferences("DiscoraterPosts", MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        Gson gson = new Gson();
+        String jsonPosts = gson.toJson(posts); // Convert the list of posts to JSON
+        editor.putString("posts", jsonPosts);
+        editor.apply(); // Save the JSON string to SharedPreferences
+    }
+
+    private void loadPosts() {
+        SharedPreferences sharedPreferences = getSharedPreferences("DiscoraterPosts", MODE_PRIVATE);
+        Gson gson = new Gson();
+        String jsonPosts = sharedPreferences.getString("posts", null);
+        Type type = new TypeToken<ArrayList<Post>>() {}.getType();
+        posts = gson.fromJson(jsonPosts, type); // Convert the JSON string back to a list of posts
+
+        // If no posts are found in SharedPreferences, add default posts
+        if (posts == null || posts.isEmpty()) {
+            posts = new ArrayList<>();
+            // Default posts
+            posts.add(new Post("John", "Madrid, Spain", 202403060, "Great night out!", "8€", "5€", "3€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta1));
+            posts.add(new Post("Jorge", "Gerona, Spain", 202403070, "Fun with friends", "7€", "4€", "2€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta2));
+            posts.add(new Post("Jaime", "Malaga, Spain", 202403060, "Lively atmosphere", "9€", "5€", "4€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta3));
+            posts.add(new Post("Ana", "Sevilla, Spain", 202403060, "Awesome DJ set", "10€", "6€", "5€", "android.resource://" + getPackageName() + "/" + R.drawable.fiesta4));
+
+            // Save the default posts for future app launches
+            savePosts();
+        }
+    }
 }
