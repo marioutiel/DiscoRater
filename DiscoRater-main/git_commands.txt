@@ -1,0 +1,63 @@
+Clone repository: git clone [url]
+url=https://github.com/marioutiel/DiscoRater.git
+
+Repository status: git status
+To see the if there are any tracked or modified files
+
+Add README file: git add README
+Start tracking the README file
+
+Stage a modified file: git add [file]
+
+Show exact lines added and removed (not staged): git diff
+
+Show exact lines added and removed (changes staged): git diff --staged
+
+Commit changes (only staged files): git commit -m 'Message'
+Commit unstaged files (ALL OF THEM): git commit -am 'Message'
+
+Remove file from directory: git rm [file]
+
+Rename file: git mv [file_from] [file_to]
+
+Stage forgotten files in a new commit:
+	1. git commit -m 'initial commit'
+	2. git add [forgotten_file]
+	3. git commit --amend
+
+Unstage a staged file: git reset HEAD [file]
+
+Discard changes in working directory: git checkout -- [file]
+
+See remote servers: git remote
+
+Adding remote repositories: git remote add [shortname] [url]
+
+Fetch all the information a remote that you don't: git fetch [shortname]
+
+Fetch and merge information from remote servers: git pull
+
+Pushing to the remotes: git push [remote-name] [branch-name]
+Usually, this will be: git push origin main
+
+Removing and renaming remotes: git remote rename [shortname] [new_shortname]
+			       git remote rm [shortname]
+
+Create a new branch: git branch [branchname]
+
+Switch to an existing branch: git checkout [branchname]
+
+Create and switch to a new branch: git branch -b [branchname]
+
+After commiting changes in the branch, merge it with main:
+	1. git branch -b [branchname]
+	2. Do the changes
+	3. git commit -am 'Message'
+	4. git checkout main
+	5. git merge [branchname]
+
+Delete a merged branch: git branch -d [branchname]
+
+List of current branches: git branch
+
+
